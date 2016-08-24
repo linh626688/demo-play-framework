@@ -1,13 +1,15 @@
 package models;
 
+import com.avaje.ebean.Model;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
-public class Task extends com.avaje.ebean.Model {
 
-    public static Find<Long, Task> find = new Find<Long, Task>() {
-    };
+@Entity
+public class Task extends Model {
+
+
 
     @Id
     public String id;
@@ -30,7 +32,5 @@ public class Task extends com.avaje.ebean.Model {
 
     public String name;
 
-    public static java.util.List<Task> findAll() {
-        return find.all();
-    }
+
 }

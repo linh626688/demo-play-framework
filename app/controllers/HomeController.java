@@ -1,8 +1,8 @@
 package controllers;
 
-import play.mvc.*;
-
-import views.html.*;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -16,7 +16,8 @@ public class HomeController extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
-    public Result index() {
+    public Result index() throws Exception {
+
         return ok(index.render("Your new application is ready."));
     }
 
