@@ -3,49 +3,100 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET        /                             controllers.HomeController.index
 # An example controller showing how to use dependency injection
-GET        /count                        controllers.CountController.count
+GET           /count                          controllers.CountController.count
 # An example controller showing how to write asynchronous code
-GET        /message                      controllers.AsyncController.message
+GET           /message                        controllers.AsyncController.message
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)
+GET           /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)
 
 
-GET        /addTasl                      controllers.TaskController.addTask()
 
-GET        /getTask                      controllers.TaskController.getTask()
 
 #HelloName
-GET        /hello/:name                  controllers.PersonController.sayHello(name:String)
+#GET        /hello/:name                  controllers.PersonController.sayHello(name:String)
 
 
-#Person (thiếu PageRequest)
-GET        /json/:quantity               controllers.PersonController.getListPerson(quantity:Int )
-GET        /db-json/all                  controllers.PersonController.getAll()
+#Person
+GET           /json/:quantity                 controllers.PersonController.getListPerson(quantity:Int )
+GET           /db-json/all                    controllers.PersonController.getAll()
+GET           /db-json/:pageNumber/100        controllers.PersonController.pageListPerson(pageNumber:Int)
 
 
 #CPU
-GET        /cpu/:max                     controllers.CpuController.testCpu(max:Int)
+GET           /cpu/:max                       controllers.CpuController.testCpu(max:Int)
 
 #String
-GET        /ram/:quantity/:length        controllers.StringContoller.createRamdomWords(quantity:Int,length:Int)
-GET        /disk/5000/1024               controllers.StringContoller.createRandomFile()
+GET           /ram/:quantity/:length          controllers.StringController.createRamdomWords(quantity:Int,length:Int)
+GET           /disk/5000/1024                 controllers.StringController.createRandomFile()
 
 #Student
-GET        /db/:quantity                 controllers.StudentController.getAll(quantity:Int)
+GET           /db/:quantity                   controllers.StudentController.getListStudent(quantity:Int)
 
 
 #Time
-GET        /sleep/BIO/:time              controllers.TimeController.sleepTime(time:Long)
-
+GET           /sleep/BIO/:time                controllers.TimeController.sleepTime(time:Long)
+GET           /sleep/NIO/:time                controllers.TimeController.sleepTimeAsync(time:Long)
 
 
 #RSA
-GET        /rsa/5000/1024                controllers.RSAController.RSA1024()
-GET        /rsa/5000/512                 controllers.RSAController.RSA512()
-GET        /rsa/5000/2048                controllers.RSAController.RSA2048()
+GET           /rsa/5000/1024                  controllers.RSAController.RSA1024()
+GET           /rsa/5000/512                   controllers.RSAController.RSA512()
+GET           /rsa/5000/2048                  controllers.RSAController.RSA2048()
 
 #Netio
-GET        /netio/:length                controllers.NetioController.getString(length:Int)
+GET           /netio/:length                  controllers.NetioController.getString(length:Int)
+
+#-----------------------------------------------------------------------------------------
+GET           /task                           controllers.TaskController.addTask()
+
+GET           /getTask                        controllers.TaskController.getTask()
+GET           /done/:id                       controllers.TaskController.done(id:Int)
+GET           /listtask/:n                    controllers.TaskController.listTask(n:Long)
+
+
+DELETE        /deleteTask/:id                 controllers.TaskController.deleteTask(id:Long)
+GET           /sayHello                       controllers.TaskController.sayHello()
+
+
+POST          /them                           controllers.TaskController.them()
+
+POST          /themTask                       controllers.TaskController.themTask()
+
+
+#test RMI Task
+GET           /demo                           controllers.client.MyController.index()
+GET           /demo/listtask/:n               controllers.client.MyController.listTask(n:Int)
+POST          /demo/addTask                   controllers.client.MyController.addTask()
+DELETE        /demo/deleteTask/:id            controllers.client.MyController.deleteTask(id:Long)
+
+#RMI----------------------------------
+
+
+#CPU
+GET           /client/cpu/:max                controllers.client.CpuController.testCpu(max:Int)
+
+#NETIO
+GET           /client/netio/:length           controllers.client.NetioController.getString(length:Int)
+
+#PERSON
+GET           /client/json/:quantity                 controllers.client.PersonController.getListPerson(quantity:Int )
+GET           /client/db-json/all                    controllers.client.PersonController.getAll()
+GET           /client/db-json/:pageNumber/100        controllers.client.PersonController.pageListPerson(pageNumber:Int)
+
+#RSA -fail
+GET           /client/rsa/5000/1024                  controllers.client.RSAController.RSA1024()
+GET           /client/rsa/5000/512                   controllers.client.RSAController.RSA512()
+GET           /client/rsa/5000/2048                  controllers.client.RSAController.RSA2048()
+
+#String
+GET           /client/ram/:quantity/:length          controllers.client.StringController.createRamdomWords(quantity:Int,length:Int)
+GET           /client/disk/5000/1024                 controllers.client.StringController.createRandomFile()
+
+#Student
+GET           /client/db/:quantity                   controllers.client.StudentController.getListStudent(quantity:Int)
+
+#Time
+GET           /client/sleep/BIO/:time                controllers.client.TimeController.sleepTime(time:Long)
+GET           /client/sleep/NIO/:time                controllers.client.TimeController.sleepTimeAsync(time:Long)

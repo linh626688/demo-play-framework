@@ -1,5 +1,7 @@
 package models;
 
+import com.avaje.ebean.Model;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -8,7 +10,7 @@ import java.util.Date;
  * Created by MinhTu on 8/16/2016.
  */
 @Entity
-public class Student {
+public class Student extends Model {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -57,5 +59,13 @@ public class Student {
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
+    }
+
+
+    public static Model.Find<Long, Student> find = new Model.Find<Long, Student>() {
+    };
+
+    public static java.util.List<Student> findAll() {
+        return find.all();
     }
 }

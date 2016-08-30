@@ -1,12 +1,11 @@
 package DTO;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 8/18/2016.
  */
-public class PageDTO implements Serializable {
+public class PageDTO {
     private long totalElements;
     private long totalPage;
     private long size;

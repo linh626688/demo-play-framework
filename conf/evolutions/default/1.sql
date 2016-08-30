@@ -22,8 +22,10 @@ create table student (
 );
 
 create table task (
-  id                            varchar(255) not null,
+  id                            integer auto_increment not null,
   name                          varchar(255),
+  done                          tinyint(1) default 0,
+  due_date                      datetime(6),
   constraint pk_task primary key (id)
 );
 

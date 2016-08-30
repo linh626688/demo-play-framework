@@ -1,11 +1,7 @@
 package DTO;
 
-import java.io.Serializable;
 
-/**
- * Created by MinhTu on 8/15/2016.
- */
-public class PersonDTO implements Serializable {
+public class PersonDTO {
     private String name;
     private int age;
     private String sex;

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by helix on 8/22/2016.
  */
-public class StringContoller extends Controller {
+public class StringController extends Controller {
 
     public Result createRamdomWords(int quantity, int length) {
         for (int i = 0; i < quantity; i++) {
